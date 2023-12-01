@@ -1,4 +1,4 @@
-
+//comentario para saber cual es la version correcta 8v
 package Pantallas;
 
 public class Inicio extends javax.swing.JFrame {
@@ -39,7 +39,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("QuechuaUnity");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/kuzco1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/kuzco4.png"))); // NOI18N
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/peru.png"))); // NOI18N
 

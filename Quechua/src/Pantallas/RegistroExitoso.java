@@ -1,6 +1,8 @@
 
 package Pantallas;
 
+import Modelo.Usuario;
+
 
 public class RegistroExitoso extends javax.swing.JFrame {
     
@@ -45,7 +47,7 @@ public class RegistroExitoso extends javax.swing.JFrame {
         jLabel3.setText("Te has registrado correctamente.");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/kuzco3.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/kuzco4.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,9 +98,13 @@ public class RegistroExitoso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Menu menu = new Menu();
+        Usuario user = new Usuario();
+        user.setNombre(Registro.Username);
+        user.setEmail(Registro.Email);
+        user.setPuntos(0);
+        Menu menu = new Menu(user);
         menu.setVisible(true);
-        menu.lblSaludo2.setText(Registro.Username+", bienvenido a QuechuaUnity.");
+        menu.lblSaludo2.setText(user.getNombre()+", bienvenido a QuechuaUnity.");
         menu.lblSaludo3.setText("¿Estas listo para aprender?");
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

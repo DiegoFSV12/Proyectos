@@ -1,12 +1,9 @@
 
 package Pantallas;
 import ConexionBD.Conexion;
-import Ventanas.*;
-import java.awt.Image;
+import Modelo.Usuario;
 import javax.swing.JOptionPane;
 import java.sql.*;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 public class Logeo extends javax.swing.JFrame {
     String user = "";
@@ -115,7 +112,7 @@ public class Logeo extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("¿No tienes cuenta?");
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/kuzco2.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/kuzco4.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -166,13 +163,17 @@ public class Logeo extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)))
                 .addComponent(jLabel7)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
@@ -218,6 +219,7 @@ public class Logeo extends javax.swing.JFrame {
     private void jbtnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAccederActionPerformed
      user = jtxtUsuario.getText().trim();
      pass = jpswContra.getText().trim();
+     Usuario usuario = new Usuario();
         if(!user.equals("") || !pass.equals("")){
             try {
                 Connection cn = Conexion.conectar();
@@ -228,7 +230,10 @@ public class Logeo extends javax.swing.JFrame {
                 if(rs.next()){
                     Username = rs.getString("nombre_usuario");
                     MaxPoint = rs.getString("max_points");
-                    Menu menu = new Menu();
+                    usuario.setNombre(Username);
+                    usuario.setEmail(user);
+                    usuario.setPuntos(Integer.parseInt(MaxPoint));
+                    Menu menu = new Menu(usuario);
                     menu.setVisible(true);
                     if(MaxPoint.equals("0")){
                         menu.lblSaludo2.setText(Username+", Bienvenido a QuechuaUnity.");
